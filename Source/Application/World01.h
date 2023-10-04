@@ -16,7 +16,10 @@ namespace nc
 	private:
 		float m_angle = 0;
 		float m_time;
+		float color1 = 1;
+		float color2 = 1;
+		float color3 = 1;
 		vec2 m_position;
-		std::vector<vec2> m_positions;
+		//std::vector<vec2> m_positions;
 	};
 }
