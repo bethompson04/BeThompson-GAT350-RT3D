@@ -17,7 +17,7 @@ namespace nc
 
     void World01::Update(float dt)
     {
-        m_angle += 45 * dt;
+        m_angle += 3 * dt;
         m_position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? -dt : 0;
         m_position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_D) ? +dt : 0;
 
@@ -25,7 +25,7 @@ namespace nc
         m_position.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_S) ? -dt : 0;
 
         if (color1 < 0) color1 = 1; else color1 -= dt / 3;
-        if (color2 < 0) color1 = 1; else color2 -= dt / 10;
+        if (color2 < 0) color1 = 1; else color2 += dt / 10;
         if (color3 < 0) color1 = 1; else color3 -= dt / 8;
 
         m_time += dt;
