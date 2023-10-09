@@ -3,7 +3,10 @@
 #include "Renderer/Renderer.h"
 #include "Input/InputSystem.h"
 
+#include "glm/glm/gtc/type_ptr.hpp"
+
 #define INTERLEAVE
+
 
 
 namespace nc
@@ -85,7 +88,7 @@ namespace nc
 
 
 #endif
-
+        //m_position.z = -10.0f;
         return true;
     }
 
@@ -95,17 +98,36 @@ namespace nc
 
     void World03::Update(float dt)
     {
-        m_angle += 3 * dt;
-        m_position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? -dt : 0;
-        m_position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_D) ? +dt : 0;
 
-        m_position.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_W) ? +dt : 0;
-        m_position.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_S) ? -dt : 0;
+        m_angle += 360 * dt;
+        m_position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? m_speed * -dt : 0;
+        m_position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_D) ? m_speed * +dt : 0;
 
+        m_position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_R) ? m_speed * -dt : 0;
+        m_position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_F) ? m_speed * +dt : 0;
+
+        m_position.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_W) ? m_speed * +dt : 0;
+        m_position.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_S) ? m_speed * -dt : 0;
         m_time += dt;
 
-        GLint uniform = glGetUniformLocation(m_program->m_program, "time");
-        glUniform1f(uniform, m_time);
+
+        // Model
+        glm::mat4 position = glm::translate(glm::mat4{ 1 }, m_position);
+        glm::mat4 rotation = glm::rotate(glm::mat4{ 1 }, glm::radians(m_angle), glm::vec3{0, 0, 1});
+        glm::mat4 model = position * rotation;
+
+        GLint uniform = glGetUniformLocation(m_program->m_program, "model");
+        glUniformMatrix4fv(uniform, 1, GL_FALSE, glm::value_ptr(model));
+
+        // View
+        glm::mat4 view = glm::lookAt(glm::vec3{ 0, 5, 5}, glm::vec3{0,0,0}, glm::vec3{0,1,0});
+        uniform = glGetUniformLocation(m_program->m_program, "view");
+        glUniformMatrix4fv(uniform, 1, GL_FALSE, glm::value_ptr(view));
+
+        // Projection
+        glm::mat4 projection = glm::perspective(glm::radians(70.0f), 800.0f / 600.0f, 0.01f, 100.0f);
+        uniform = glGetUniformLocation(m_program->m_program, "projection");
+        glUniformMatrix4fv(uniform, 1, GL_FALSE, glm::value_ptr(projection));
     }
 
     void World03::Draw(Renderer& renderer)

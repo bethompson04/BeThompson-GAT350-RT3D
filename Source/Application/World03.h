@@ -16,11 +16,11 @@ namespace nc
 
 	private:
 		float m_angle = 0;
-		float m_time;
-		vec2 m_position;
-		GLuint m_vao;
-		//std::vector<vec2> m_positions;
+		float m_time = 0;
+		float m_speed = 10;
+		glm::vec3 m_position;
 
+		GLuint m_vao = 0;
 		res_t<Program> m_program;
 	};
 }
