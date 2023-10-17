@@ -4,6 +4,7 @@
 #include "Model.h"
 #include "Texture.h"
 #include "Shader.h"
+#include "Material.h"
 #include "Program.h"
 #include "Gui.h"
 #include "VertexBuffer.h"
