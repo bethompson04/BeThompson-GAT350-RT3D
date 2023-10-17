@@ -52,15 +52,15 @@ namespace nc
 			size = m_indexCount * sizeof(GLubyte);
 			break;
 		case GL_UNSIGNED_SHORT:
-			size = m_indexCount * GL_UNSIGNED_SHORT;
+			size = m_indexCount * sizeof(GLushort);
 			break;
 		case GL_UNSIGNED_INT:
-			size = m_indexCount * GL_UNSIGNED_INT;
+			size = m_indexCount * sizeof(GLuint);
 			break;
 		}
 
 		// copy data into index buffer
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, &data, GL_STATIC_DRAW);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);
 	}
 		
 	void VertexBuffer::SetAttribute(int attribindex, GLint size, GLsizei stride, GLuint offset)

@@ -14,14 +14,6 @@ namespace nc
 
         m_material = GET_RESOURCE(Material, "materials/quad.mtrl");
 
-        //m_program = GET_RESOURCE(Program, "Shaders/unlit_texture.prog");
-        //m_program->Use();
-
-        //m_texture = GET_RESOURCE(Texture, "Textures/llama.jpg");
-        //m_texture->Bind();
-        //m_texture->SetActive(GL_TEXTURE0);
-
-
         // Vertex Data
         float vertexData[] = {
             -0.8f, -0.8f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, // vertex 1
@@ -30,7 +22,7 @@ namespace nc
              0.8f,  0.8f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f
         };
 
-        m_vertexBuffer = GET_RESOURCE(VertexBuffer, "vb");
+        m_vertexBuffer = std::make_shared<VertexBuffer>();
         m_vertexBuffer->CreateVertexBuffer(sizeof(vertexData), 4, vertexData);
 
 
