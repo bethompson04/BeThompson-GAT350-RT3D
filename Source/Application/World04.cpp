@@ -14,7 +14,7 @@ namespace nc
         auto material = GET_RESOURCE(Material, "Materials/grid.mtrl");
         m_model = std::make_shared<Model>();
         m_model->SetMaterial(material);
-        m_model->Load("Models/squirrel.glb");
+        m_model->Load("Models/sphere.obj");
  
         return true;
     }
@@ -28,22 +28,13 @@ namespace nc
         ENGINE.GetSystem<Gui>()->BeginFrame();
 
         ImGui::Begin("Transform");
-        ImGui::DragFloat3("Position", &m_transform.position[0]);
-        ImGui::DragFloat3("Scale", &m_transform.scale[0]);
+        ImGui::DragFloat3("Position", &m_transform.position[0], 0.1f);
+        ImGui::DragFloat3("Scale", &m_transform.scale[0], 0.1f);
         ImGui::DragFloat3("Rotation", &m_transform.rotation[0]);
         ImGui::End();
 
 
-        // Silly Inputs
-        // -- Rotation Inputs
-        m_transform.rotation.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_O) ? -180 * dt : 0;
-        m_transform.rotation.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_U) ? 180 * dt : 0;
-
-        m_transform.rotation.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_I) ? -180 * dt : 0;
-        m_transform.rotation.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_K) ? 180 * dt : 0;
-
-        m_transform.rotation.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_J) ? -180 * dt : 0;
-        m_transform.rotation.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_L) ? 180 * dt : 0;
+        // Silly Input
 
         // Position Inputs
         m_transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? m_speed * -dt : 0;
@@ -55,6 +46,7 @@ namespace nc
         m_transform.position.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_W) ? m_speed * +dt : 0;
         m_transform.position.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_S) ? m_speed * -dt : 0;
         m_time += dt;
+
 
         auto material = m_model->GetMaterial();
         material->ProcessGui();
@@ -81,7 +73,9 @@ namespace nc
 
         // Render
         
+        //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         m_model->Draw();
+        //glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
         ENGINE.GetSystem<Gui>()->Draw();
 
