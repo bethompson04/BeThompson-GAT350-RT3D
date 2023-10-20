@@ -1,1 +1,22 @@
 INFO: Main.cpp(13) Initialize Engine...
+ERROR: Renderer.cpp(174) OPENGL Source: ShaderCompiler Type: Other(0) | SHADER_ID_COMPILE other warning has been generated. GLSL compile warning(s) for shader 3, "": WARNING: 0:1: '' :  #version directive missing
+WARNING: 0:1: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
+WARNING: 0:1: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
+WARNING: 0:2: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
+WARNING: 0:2: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
+WARNING: 0:2: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
+WARNING: 0:3: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
+WARNING: 0:3: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
+WARNING: 0:3: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
+WARNING: 0:4: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
+WARNING: 0:4: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
+WARNING: 0:4: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
+WARNING: 0:5: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
+WARNING: 0:6: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
+WARNING: 0:6: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
+WARNING: 0:7: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
+WARNING: 0:10: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
+WARNING: 0:10: 'binding' : symbol not available in current GLSL version 
+WARNING: 0:15: 'function' : is not available in current GLSL version texture
+
+
