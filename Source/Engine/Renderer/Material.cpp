@@ -70,7 +70,7 @@ namespace nc
 		ImGui::Begin("Material");
 
 		ImGui::ColorEdit4("Diffuse", glm::value_ptr(diffuse));
-		ImGui::ColorEdit4("Specular", glm::value_ptr(specular));
+		ImGui::ColorEdit3("Specular", glm::value_ptr(specular));
 		ImGui::DragFloat("Shine", &shine, 0.1f, 2.0f, 200.0f);
 		ImGui::DragFloat2("Tiling", glm::value_ptr(tiling), 0.1f);
 		ImGui::DragFloat2("Offset", glm::value_ptr(offset), 0.1f);
@@ -80,8 +80,8 @@ namespace nc
 		ImGui::Begin("Lighting");
 
 		ImGui::DragFloat3("Position", glm::value_ptr(lightPosition), 0.1f);
-		ImGui::DragFloat3("Ambient Color", glm::value_ptr(ambientLightColor), 0.001f);
-		ImGui::DragFloat3("Diffused Color", glm::value_ptr(diffusedLightColor), 0.001f);
+		ImGui::ColorEdit3("Ambient Color", glm::value_ptr(ambientLightColor), 0.001f);
+		ImGui::ColorEdit3("Diffused Color", glm::value_ptr(diffusedLightColor), 0.001f);
 
 		ImGui::End();
 	}
