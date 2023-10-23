@@ -37,9 +37,8 @@ namespace nc
 		READ_DATA(document, tiling);
 		READ_DATA(document, offset);
 
-		READ_DATA(document, ambientLightColor);
-		READ_DATA(document, lightPosition);
-		READ_DATA(document, diffusedLightColor);
+
+
 
 		return true;
 	}
@@ -52,11 +51,6 @@ namespace nc
 		m_program->SetUniform("material.shine", shine);
 		m_program->SetUniform("material.tiling", tiling);
 		m_program->SetUniform("material.offset", offset);
-
-		m_program->SetUniform("light.lightPosition", lightPosition);
-		m_program->SetUniform("ambientLightColor", ambientLightColor);
-		m_program->SetUniform("light.diffusedLightColor", diffusedLightColor);
-
 
 		for (size_t i = 0; i < m_textures.size(); i++)
 		{
@@ -77,12 +71,6 @@ namespace nc
 
 		ImGui::End();
 
-		ImGui::Begin("Lighting");
 
-		ImGui::DragFloat3("Position", glm::value_ptr(lightPosition), 0.1f);
-		ImGui::ColorEdit3("Ambient Color", glm::value_ptr(ambientLightColor), 0.001f);
-		ImGui::ColorEdit3("Diffused Color", glm::value_ptr(diffusedLightColor), 0.001f);
-
-		ImGui::End();
 	}
 }
