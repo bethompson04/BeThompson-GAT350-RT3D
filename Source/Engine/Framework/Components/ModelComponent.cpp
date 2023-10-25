@@ -1,28 +1,28 @@
-#include "ModelRenderComponent.h"
+#include "ModelComponent.h"
 #include "Framework/Actor.h"
 #include "Framework/Resource/ResourceManager.h"
 
 namespace nc
 {
-	CLASS_DEFINITION(ModelRenderComponent)
+	CLASS_DEFINITION(ModelComponent)
 
-	bool ModelRenderComponent::Initialize()
+	bool ModelComponent::Initialize()
 	{
 		if (!modelName.empty()) m_model = GET_RESOURCE(Model, modelName);
 
 		return true;
 	}
 
-	void ModelRenderComponent::Update(float dt)
+	void ModelComponent::Update(float dt)
 	{
 	}
 
-	void ModelRenderComponent::Draw(Renderer& renderer)
+	void ModelComponent::Draw(Renderer& renderer)
 	{
 		//m_model->Draw(renderer, m_owner->transform);
 	}
 
-	void ModelRenderComponent::Read(const json_t& value)
+	void ModelComponent::Read(const json_t& value)
 	{
 		READ_DATA(value, modelName);
 	}

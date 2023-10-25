@@ -31,25 +31,23 @@ uniform struct Light
 	float range;
 	float innerAngle;
 	float outerAngle;
-} light;
+} lights[3];
 
 uniform vec3 ambientLightColor;
+uniform int numLights = 3;
 
-vec3 ads(in vec3 position, in vec3 normal)
+float attenuation(in vec3 position1, in vec3 position2, in float range)
 {
-	// AMBIENT
-	vec3 ambient = ambientLightColor;
+	float distanceSqr = dot(position1 - position2, position1 - position2);
+	float rangeSqr = pow(range, 2.0);
+	float attenuation = max(0, 1 - pow((distanceSqr / rangeSqr), 2.0));
+	attenuation = pow(attenuation, 2.0);
+ 
+	return attenuation;
+}
 
-	// ATTENUATION
-	float attenuation = 1;
-	if (light.type != DIRECTIONAL)
-	{
-		float distanceSqr = dot(light.lightPosition - position, light.lightPosition - position);
-		float rangeSqr = light.range * light.range;
-		attenuation = max(0,1 - pow((distanceSqr/rangeSqr), 2.0));
-		attenuation = attenuation * attenuation;
-	}
-
+void phong(in Light light, in vec3 position, in vec3 normal, out vec3 diffuse, out vec3 specular)
+{
 	// DIFFUSE
 	// calculating where the light is comfing from
 	vec3 lightDirection = (light.type == DIRECTIONAL) ? normalize(-light.direction) : normalize(light.lightPosition - fposition);
@@ -63,10 +61,10 @@ vec3 ads(in vec3 position, in vec3 normal)
 	}
 
 	float intensity = max(dot(lightDirection, normal), 0) * spotIntensity;
-	vec3 diffuse = material.diffuse * (light.diffusedLightColor * intensity);
+	diffuse = material.diffuse * (light.diffusedLightColor * intensity);
 
 	// SPECULAR
-	vec3 specular = vec3(0);
+	specular = vec3(0);
 	if (intensity > 0)
 	{
 		// calculating reflection 
@@ -77,13 +75,23 @@ vec3 ads(in vec3 position, in vec3 normal)
 		intensity = pow(intensity, material.shine);
 		specular = material.specular * intensity * spotIntensity;
 	}
-
-	// Combining ambient, diffuse, and specular
-	return ambient + (diffuse + specular) * light.intensity * attenuation;
 }
 
 void main()
 {
 	vec4 texcolor = texture(tex, ftexcoord);
-	ocolor = texcolor * vec4(ads(fposition, fnormal), 1);
+	// set ambient light
+	ocolor = vec4(ambientLightColor, 1) * texcolor;
+ 
+	// set lights
+	for (int i = 0; i < numLights; i++)
+	{
+		vec3 diffuse;
+		vec3 specular;
+ 
+		float attenuation = (lights[i].type == DIRECTIONAL) ? 1 : attenuation(lights[i].lightPosition, fposition, lights[i].range);
+ 
+		phong(lights[i], fposition, fnormal, diffuse, specular);
+		ocolor += ((vec4(diffuse, 1) * texcolor) + vec4(specular, 1)) * lights[i].intensity * attenuation;
+	}
 }

@@ -6,26 +6,9 @@
 
 namespace nc
 {
-	struct light_t
-	{
-		enum eType
-		{
-			Point,
-			Directional,
-			Spot
-		};
-		eType type;
-		glm::vec3 position;
-		glm::vec3 direction;
-		glm::vec3 color;
-		float intensity;
-		float range;
-		float innerAngle;
-		float outerAngle;
-	};
 
 
-	class World04 : public World
+	class World05 : public World
 	{
 	public:
 		bool Initialize() override;
@@ -37,12 +20,7 @@ namespace nc
 		float m_time = 0;
 		float m_speed = 10;
 
-		//light_t m_light;
-		light_t m_lights[3];
-		int m_selected = 0;
 		glm::vec3 ambientLightColor{ 0.1f, 0.1f, 0.1f };
 
-		Transform m_transform;
-		res_t<Model> m_model;
 	};
 }

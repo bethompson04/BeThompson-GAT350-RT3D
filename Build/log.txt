@@ -1,4 +1,8 @@
-INFO: Main.cpp(13) Initialize Engine...
+INFO: Factory.h(75) Class registered: ModelComponent
+INFO: Factory.h(75) Class registered: LightComponent
+INFO: Factory.h(75) Class registered: EnginePhysicsComponent
+INFO: Factory.h(75) Class registered: Actor
+INFO: Main.cpp(14) Initialize Engine...
 ERROR: Renderer.cpp(174) OPENGL Source: ShaderCompiler Type: Other(0) | SHADER_ID_COMPILE other warning has been generated. GLSL compile warning(s) for shader 3, "": WARNING: 0:2: '' :  #version directive missing
 WARNING: 0:6: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
 WARNING: 0:6: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
@@ -14,11 +18,15 @@ WARNING: 0:10: 'GL_ARB_explicit_attrib_location' :  extension is not available i
 WARNING: 0:11: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
 WARNING: 0:12: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
 WARNING: 0:12: 'binding' : symbol not available in current GLSL version 
-WARNING: 0:44: 'assign' : implicit type conversion allowed from GLSL 1.20 
-WARNING: 0:48: 'assign' : implicit type conversion allowed from GLSL 1.20 
-WARNING: 0:51: 'assign' : implicit type conversion allowed from GLSL 1.20 
-WARNING: 0:58: 'assign' : implicit type conversion allowed from GLSL 1.20 
-WARNING: 0:64: 'assign' : implicit type conversion allowed from GLSL 1.20 
-WARNING: 0:76: 'function' : is not available in current GLSL version texture
+WARNING: 0:43: 'assign' : implicit type conversion allowed from GLSL 1.20 
+WARNING: 0:43: 'assign' : implicit type conversion allowed from GLSL 1.20 
+WARNING: 0:43: 'assign' : implicit type conversion allowed from GLSL 1.20 
+WARNING: 0:55: 'assign' : implicit type conversion allowed from GLSL 1.20 
+WARNING: 0:63: 'assign' : implicit type conversion allowed from GLSL 1.20 
+WARNING: 0:68: 'assign' : implicit type conversion allowed from GLSL 1.20 
+WARNING: 0:74: 'assign' : implicit type conversion allowed from GLSL 1.20 
+WARNING: 0:83: 'function' : is not available in current GLSL version texture
+WARNING: 0:92: 'assign' : implicit type conversion allowed from GLSL 1.20 
+WARNING: 0:92: 'assign' : implicit type conversion allowed from GLSL 1.20 
 
 
