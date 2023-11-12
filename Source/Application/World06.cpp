@@ -80,6 +80,12 @@ namespace nc
             if (effect) params |= SCANLINE_MASK;
             else params ^= SCANLINE_MASK;
         }
+        effect = params & DISTORT_MASK;
+        if (ImGui::Checkbox("Distortion", &effect))
+        {
+            if (effect) params |= DISTORT_MASK;
+            else params ^= DISTORT_MASK;
+        }
         ImGui::End();
 
 
@@ -91,6 +97,8 @@ namespace nc
             program->SetUniform("blend", m_blend);
             program->SetUniform("params", params);
             program->SetUniform("time", m_time);
+            GLfloat move = (GL_TIME_ELAPSED) / 1000.0 * 2 * 3.14159 * 0.75;
+            program->SetUniform("offset", move);
         }
 
       

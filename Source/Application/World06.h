@@ -16,6 +16,7 @@ namespace nc
 		const uint32_t COLORTINT_MASK = (1 << 2);
 		const uint32_t GRAIN_MASK =     (1 << 3);
 		const uint32_t SCANLINE_MASK =  (1 << 4);
+		const uint32_t DISTORT_MASK =   (1 << 5);
 	public:
 		bool Initialize() override;
 		void Shutdown() override;

@@ -5,12 +5,14 @@
 #define COLORTINT_MASK  (1 << 2)
 #define GRAIN_MASK      (1 << 3)
 #define SCANLINE_MASK   (1 << 4)
+#define DISTORT_MASK    (1 << 5)
 
 in layout(location = 1) vec2 ftexcoord;
 out layout(location = 0) vec4 ocolor;
 
 uniform float blend = 1;
 uniform uint params = 0;
+uniform float offset;
 uniform vec3 tint;
 uniform float time = 0;
 
@@ -43,14 +45,20 @@ vec4 grain(in vec4 color)
 
 vec4 scanline(in vec4 color)
 {
-	
-
 	return (int(gl_FragCoord.y) % 2 != 0) ? vec4(0,0,0,0) : color;
+}
+
+vec4 staticWave(in vec4 color)
+{
+	vec2 texcoord = ftexcoord;
+	texcoord.x += sin(texcoord.y * 4*2*3.14159 + offset) / 100;
+	return texture2D(screenTexture, texcoord);
 }
 
 
 void main()
 {
+	
 	vec4 basecolor = texture(screenTexture, ftexcoord);
 	vec4 postprocess = basecolor;
 
@@ -59,6 +67,7 @@ void main()
 	if (bool(params & COLORTINT_MASK)) postprocess = colortint(postprocess, tint);
 	if (bool(params & GRAIN_MASK)) postprocess = grain(postprocess);
 	if (bool(params & SCANLINE_MASK)) postprocess = scanline(postprocess);
+	if (bool(params & DISTORT_MASK)) postprocess = staticWave(postprocess);
 
 
 
