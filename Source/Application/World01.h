@@ -1,6 +1,6 @@
 #pragma once
 #include "Framework/World.h"
-#include "Core/Math/Vector2.h"
+#include <glm/glm/glm.hpp>
 #include <vector>
 
 namespace nc
@@ -19,7 +19,7 @@ namespace nc
 		float color1 = 1;
 		float color2 = 1;
 		float color3 = 1;
-		vec2 m_position;
-		//std::vector<vec2> m_positions;
+		glm::vec2 m_position;
+		std::vector<glm::vec2> m_positions;
 	};
 }

@@ -14,8 +14,11 @@
 #include "Components/EnginePhysicsComponent.h"
 
 #include "Components/LightComponent.h"
+#include  "Components/CameraComponent.h"
 
 #include "Components/CollisionComponent.h"
+
+#include "Components/CameraController.h"
 
 #include "Factory.h"
 #include "Resource/ResourceManager.h"

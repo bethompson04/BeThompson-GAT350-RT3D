@@ -1,32 +1,28 @@
-INFO: Factory.h(75) Class registered: ModelComponent
-INFO: Factory.h(75) Class registered: LightComponent
-INFO: Factory.h(75) Class registered: EnginePhysicsComponent
-INFO: Factory.h(75) Class registered: Actor
-INFO: Main.cpp(14) Initialize Engine...
-ERROR: Renderer.cpp(174) OPENGL Source: ShaderCompiler Type: Other(0) | SHADER_ID_COMPILE other warning has been generated. GLSL compile warning(s) for shader 3, "": WARNING: 0:2: '' :  #version directive missing
-WARNING: 0:6: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
-WARNING: 0:6: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
-WARNING: 0:7: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
-WARNING: 0:7: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
-WARNING: 0:7: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
-WARNING: 0:8: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
-WARNING: 0:8: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
-WARNING: 0:8: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
-WARNING: 0:9: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
-WARNING: 0:10: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
-WARNING: 0:10: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
-WARNING: 0:11: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
-WARNING: 0:12: 'GL_ARB_explicit_attrib_location' :  extension is not available in current GLSL version
-WARNING: 0:12: 'binding' : symbol not available in current GLSL version 
-WARNING: 0:43: 'assign' : implicit type conversion allowed from GLSL 1.20 
-WARNING: 0:43: 'assign' : implicit type conversion allowed from GLSL 1.20 
-WARNING: 0:43: 'assign' : implicit type conversion allowed from GLSL 1.20 
-WARNING: 0:55: 'assign' : implicit type conversion allowed from GLSL 1.20 
-WARNING: 0:63: 'assign' : implicit type conversion allowed from GLSL 1.20 
-WARNING: 0:68: 'assign' : implicit type conversion allowed from GLSL 1.20 
-WARNING: 0:74: 'assign' : implicit type conversion allowed from GLSL 1.20 
-WARNING: 0:83: 'function' : is not available in current GLSL version texture
-WARNING: 0:92: 'assign' : implicit type conversion allowed from GLSL 1.20 
-WARNING: 0:92: 'assign' : implicit type conversion allowed from GLSL 1.20 
-
-
+INFO: Factory.h(74) Class registered: RotateComponent
+INFO: Factory.h(74) Class registered: ModelComponent
+INFO: Factory.h(74) Class registered: LightComponent
+INFO: Factory.h(74) Class registered: EnginePhysicsComponent
+INFO: Factory.h(74) Class registered: CameraController
+INFO: Factory.h(74) Class registered: CameraComponent
+INFO: Factory.h(74) Class registered: Actor
+INFO: Main.cpp(32) Initialize Engine...
+WARNING: Program.cpp(165) Could not find uniform location: view
+WARNING: Program.cpp(165) Could not find uniform location: projection
+WARNING: Program.cpp(165) Could not find uniform location: lights[0].type
+WARNING: Program.cpp(165) Could not find uniform location: lights[0].lightPosition
+WARNING: Program.cpp(165) Could not find uniform location: lights[0].direction
+WARNING: Program.cpp(165) Could not find uniform location: lights[0].diffusedLightColor
+WARNING: Program.cpp(165) Could not find uniform location: lights[0].intensity
+WARNING: Program.cpp(165) Could not find uniform location: lights[0].range
+WARNING: Program.cpp(165) Could not find uniform location: lights[0].innerAngle
+WARNING: Program.cpp(165) Could not find uniform location: lights[0].outerAngle
+WARNING: Program.cpp(165) Could not find uniform location: numLights
+WARNING: Program.cpp(165) Could not find uniform location: ambientLightColor
+WARNING: Program.cpp(165) Could not find uniform location: material.params
+WARNING: Program.cpp(165) Could not find uniform location: material.albedo
+WARNING: Program.cpp(165) Could not find uniform location: material.specular
+WARNING: Program.cpp(165) Could not find uniform location: material.emissive
+WARNING: Program.cpp(165) Could not find uniform location: material.shine
+WARNING: Program.cpp(165) Could not find uniform location: material.tiling
+WARNING: Program.cpp(165) Could not find uniform location: material.offset
+WARNING: Program.cpp(165) Could not find uniform location: model

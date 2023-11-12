@@ -17,9 +17,9 @@ namespace nc
 	void LightComponent::SetProgram(const res_t<Program> program, const std::string& name)
 	{
 		program->SetUniform(name + ".type", type);
-		program->SetUniform(name + ".position", m_owner->transform.position);
+		program->SetUniform(name + ".lightPosition", m_owner->transform.position);
 		program->SetUniform(name + ".direction", m_owner->transform.Forward());
-		program->SetUniform(name + ".color", color);
+		program->SetUniform(name + ".diffusedLightColor", color);
 		program->SetUniform(name + ".intensity", intensity);
 		program->SetUniform(name + ".range", range);
 		program->SetUniform(name + ".innerAngle", glm::radians(innerAngle));
@@ -47,5 +47,16 @@ namespace nc
 	void LightComponent::Read(const nc::json_t& value)
 	{
 		// read json file
+		std::string lightTypeName;
+		READ_NAME_DATA(value, "lightType", lightTypeName);
+		if (StringUtils::IsEqualIgnoreCase(lightTypeName, "point")) type = eType::Point;
+		else if (StringUtils::IsEqualIgnoreCase(lightTypeName, "directional")) type = eType::Point;
+		else if (StringUtils::IsEqualIgnoreCase(lightTypeName, "spot")) type = eType::Point;
+
+		READ_DATA(value, color);
+		READ_DATA(value, intensity);
+		READ_DATA(value, range);
+		READ_DATA(value, innerAngle);
+		READ_DATA(value, outerAngle);
 	}
 }

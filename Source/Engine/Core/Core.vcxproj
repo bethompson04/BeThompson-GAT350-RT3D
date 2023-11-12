@@ -157,14 +157,17 @@
     <ClInclude Include="Math\Vector3.h" />
     <ClInclude Include="Memory.h" />
     <ClInclude Include="Random.h" />
+    <ClInclude Include="StringUtils.h" />
     <ClInclude Include="Time.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileIO.cpp" />
     <ClCompile Include="Json.cpp" />
     <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="Math\MathUtils.cpp" />
     <ClCompile Include="Math\Transform.cpp" />
     <ClCompile Include="Memory.cpp" />
+    <ClCompile Include="StringUtils.cpp" />
     <ClCompile Include="Time.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

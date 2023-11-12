@@ -1,0 +1,12 @@
+{
+  "program": "shaders/skybox.prog",
+  "cubemap": "Lycksele3",
+  "cubemaps": [
+    "textures/Lycksele3/posx.jpg",
+    "textures/Lycksele3/negx.jpg",
+    "textures/Lycksele3/posy.jpg",
+    "textures/Lycksele3/negy.jpg",
+    "textures/Lycksele3/posz.jpg",
+    "textures/Lycksele3/negz.jpg"
+  ]
+}

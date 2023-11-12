@@ -29,7 +29,12 @@ namespace nc
 
 		void SetGame(World* game) { m_game = game; }
 
+		void ProcessGui();
+
 		friend class Actor;
+
+	public:
+		glm::vec3 ambientLightColor{ 0.2 };
 
 	private:
 		World* m_game = nullptr;

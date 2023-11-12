@@ -1,7 +1,7 @@
 {
-  "program": "shaders/multi_lit_texture.prog",
-  "textures": [ "textures/squirrel_diffuse.png" ],
-  "diffuse": [
+  "program": "shaders/lit_phong.prog",
+  "albedoTexture": [ "textures/squirrel_diffuse.png" ],
+  "albedo": [
     1,
     1,
     1
@@ -10,6 +10,11 @@
     0.4,
     0.4,
     0.4
+  ],  
+  "emissive": [
+    0.0,
+    0.0,
+    0.0
   ],
   "shininess": 2,
   "tiling": [ 1, 1 ],

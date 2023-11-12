@@ -61,6 +61,12 @@
     <ClCompile Include="Model.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Cubemap.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Framebuffer.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Renderer.h">
@@ -88,6 +94,12 @@
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="Model.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Cubemap.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Framebuffer.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
