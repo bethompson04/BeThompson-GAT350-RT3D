@@ -26,3 +26,4 @@ WARNING: Program.cpp(165) Could not find uniform location: material.shine
 WARNING: Program.cpp(165) Could not find uniform location: material.tiling
 WARNING: Program.cpp(165) Could not find uniform location: material.offset
 WARNING: Program.cpp(165) Could not find uniform location: model
+ERROR: Renderer.cpp(185) OPENGL Source: OpenGL Type: Performance(2) | API_ID_RECOMPILE_FRAGMENT_SHADER performance warning has been generated. Fragment shader recompiled due to state change.

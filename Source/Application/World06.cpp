@@ -2,6 +2,7 @@
 #include "Framework/Framework.h"
 #include "Renderer/Renderer.h"
 #include "Input/InputSystem.h"
+#include "Core/Core.h"
 
 #include "glm/glm/gtc/type_ptr.hpp"
 #include <glm/glm/gtx/color_space.hpp>
@@ -60,6 +61,25 @@ namespace nc
             if (effect) params |= GRAYSCALE_MASK;
             else params ^= GRAYSCALE_MASK;
         }
+        effect = params & COLORTINT_MASK;
+        if (ImGui::Checkbox("Colortint", &effect))
+        {
+            if (effect) params |= COLORTINT_MASK;
+            else params ^= COLORTINT_MASK;
+        }
+        ImGui::ColorEdit3("Tint", glm::value_ptr(m_tint));
+        effect = params & GRAIN_MASK;
+        if (ImGui::Checkbox("Grain", &effect))
+        {
+            if (effect) params |= GRAIN_MASK;
+            else params ^= GRAIN_MASK;
+        }
+        effect = params & SCANLINE_MASK;
+        if (ImGui::Checkbox("Scanline", &effect))
+        {
+            if (effect) params |= SCANLINE_MASK;
+            else params ^= SCANLINE_MASK;
+        }
         ImGui::End();
 
 
@@ -67,8 +87,10 @@ namespace nc
         if (program)
         {
             program->Use();
+            program->SetUniform("tint", m_tint);
             program->SetUniform("blend", m_blend);
             program->SetUniform("params", params);
+            program->SetUniform("time", m_time);
         }
 
       
@@ -85,7 +107,7 @@ namespace nc
 
 
 
-        renderer.BeginFrame({0,0,1});
+        renderer.BeginFrame({0,0,0});
         m_scene->Draw(renderer);
 
         framebuffer->Unbind();
