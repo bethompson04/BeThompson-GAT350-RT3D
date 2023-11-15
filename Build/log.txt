@@ -18,12 +18,19 @@ WARNING: Program.cpp(165) Could not find uniform location: lights[0].innerAngle
 WARNING: Program.cpp(165) Could not find uniform location: lights[0].outerAngle
 WARNING: Program.cpp(165) Could not find uniform location: numLights
 WARNING: Program.cpp(165) Could not find uniform location: ambientLightColor
+WARNING: Program.cpp(165) Could not find uniform location: lights[0].type
+WARNING: Program.cpp(165) Could not find uniform location: lights[0].lightPosition
+WARNING: Program.cpp(165) Could not find uniform location: lights[0].direction
+WARNING: Program.cpp(165) Could not find uniform location: lights[0].diffusedLightColor
+WARNING: Program.cpp(165) Could not find uniform location: lights[0].intensity
+WARNING: Program.cpp(165) Could not find uniform location: lights[0].range
+WARNING: Program.cpp(165) Could not find uniform location: lights[0].innerAngle
+WARNING: Program.cpp(165) Could not find uniform location: lights[0].outerAngle
+WARNING: Program.cpp(165) Could not find uniform location: numLights
+WARNING: Program.cpp(165) Could not find uniform location: ambientLightColor
 WARNING: Program.cpp(165) Could not find uniform location: material.params
-WARNING: Program.cpp(165) Could not find uniform location: material.albedo
 WARNING: Program.cpp(165) Could not find uniform location: material.specular
 WARNING: Program.cpp(165) Could not find uniform location: material.emissive
 WARNING: Program.cpp(165) Could not find uniform location: material.shine
-WARNING: Program.cpp(165) Could not find uniform location: material.tiling
-WARNING: Program.cpp(165) Could not find uniform location: material.offset
-WARNING: Program.cpp(165) Could not find uniform location: model
-ERROR: Renderer.cpp(185) OPENGL Source: OpenGL Type: Performance(2) | API_ID_RECOMPILE_FRAGMENT_SHADER performance warning has been generated. Fragment shader recompiled due to state change.
+WARNING: Program.cpp(165) Could not find uniform location: shadowVP
+WARNING: Program.cpp(165) Could not find uniform location: shadowVP

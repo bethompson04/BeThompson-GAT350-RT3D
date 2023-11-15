@@ -14,18 +14,21 @@ namespace nc
     bool World07::Initialize()
     {
         m_scene = std::make_unique<Scene>();
-        m_scene->Load("scenes/scene_framebuffer.json");
+        m_scene->Load("scenes/scene_shadow.json");
         m_scene->Initialize();
 
+        // depth texture create
         auto texture = std::make_shared<Texture>();
-        texture->CreateTexture(1024, 1024);
-        ADD_RESOURCE("fb_texture", texture);
+        texture->CreateDepthTexture(1024, 1024);
+        ADD_RESOURCE("depth_texture", texture);
 
+        // depth buffer create :O
         auto framebuffer = std::make_shared<Framebuffer>();
-        framebuffer->CreateFramebuffer(texture);
-        ADD_RESOURCE("fb", framebuffer);
+        framebuffer->CreateDepthBuffer(texture);
+        ADD_RESOURCE("depth_buffer", framebuffer);
 
-        auto material = GET_RESOURCE(Material, "materials/postprocess.mtrl");
+        // Set depth texture to debug sprite
+        auto material = GET_RESOURCE(Material, "materials/sprite.mtrl");
         if (material)
         {
             material->albedoTexture = texture;
@@ -43,88 +46,48 @@ namespace nc
         m_time += dt;
 
         ENGINE.GetSystem<Gui>()->BeginFrame();
-
+        
         m_scene->Update(dt);
         m_scene->ProcessGui();
 
-        ImGui::Begin("Post Process");
-        ImGui::SliderFloat("Blend", &m_blend, 0, 1);
-
-        bool effect = params & INVERT_MASK;
-        if (ImGui::Checkbox("Invert", &effect))
-        {
-            (effect) ? params |= INVERT_MASK : params ^= INVERT_MASK;
-        }
-
-        effect = params & GRAYSCALE_MASK;
-        if (ImGui::Checkbox("Grayscale", &effect))
-        {
-            (effect) ? params |= GRAYSCALE_MASK : params ^= GRAYSCALE_MASK;
-        }
-
-        effect = params & COLORTINT_MASK;
-        if (ImGui::Checkbox("Colortint", &effect))
-        {
-            (effect) ? params |= COLORTINT_MASK : params ^= COLORTINT_MASK;
-        }
-        ImGui::ColorEdit3("Tint", glm::value_ptr(m_tint));
-
-        effect = params & GRAIN_MASK;
-        if (ImGui::Checkbox("Grain", &effect))
-        {
-            (effect) ? params |= GRAIN_MASK : params ^= GRAIN_MASK;
-        }
-
-        effect = params & SCANLINE_MASK;
-        if (ImGui::Checkbox("Scanline", &effect))
-        {
-            (effect) ? params |= SCANLINE_MASK : params ^= SCANLINE_MASK;
-        }
-
-        effect = params & DISTORT_MASK;
-        if (ImGui::Checkbox("Distortion", &effect))
-        {
-            (effect) ? params |= DISTORT_MASK : params ^= DISTORT_MASK;
-        }
-        ImGui::End();
-
-
-        auto program = GET_RESOURCE(Program, "shaders/postprocess.prog");
-        if (program)
-        {
-            program->Use();
-            program->SetUniform("tint", m_tint);
-            program->SetUniform("blend", m_blend);
-            program->SetUniform("params", params);
-            program->SetUniform("time", m_time);
-            GLfloat move = (GL_TIME_ELAPSED) / 1000.0 * 2 * 3.14159 * 0.75;
-            program->SetUniform("offset", move);
-        }
-
-      
         ENGINE.GetSystem<Gui>()->EndFrame();
     }
 
     void World07::Draw(Renderer& renderer)
     {
         // ** PASS ONE **
-        m_scene->GetActorByName("postprocess")->active = false;
-        auto framebuffer = GET_RESOURCE(Framebuffer, "fb");
+        auto framebuffer = GET_RESOURCE(Framebuffer, "depth_buffer");
         renderer.SetViewport(framebuffer->GetSize().x, framebuffer->GetSize().y);
         framebuffer->Bind();
 
+        renderer.ClearDepth();
+        auto program = GET_RESOURCE(Program, "shaders/shadow_depth.prog");
+        program->Use();
 
+        auto lights = m_scene->GetComponents<LightComponent>();
+        for (auto light : lights)
+        {
+            if (light->castShadow)
+            {
+                glm::mat4 shadowMatrix = light->getShadowMatrix();
+                program->SetUniform("shadowVP", shadowMatrix);
+            }
+        }
 
-        renderer.BeginFrame({0,0,0});
-        m_scene->Draw(renderer);
+        auto models = m_scene->GetComponents<ModelComponent>();
+        for (auto model : models)
+        {
+            program->SetUniform("model", model->m_owner->transform.GetMatrix());
+            model->m_model->Draw();
+        }
 
         framebuffer->Unbind();
         
         // ** PASS TWO **
-        m_scene->GetActorByName("postprocess")->active = true;
+
         renderer.ResetViewport();
         renderer.BeginFrame();
-        m_scene->GetActorByName("postprocess")->Draw(renderer);
+        m_scene->Draw(renderer);
 
         ENGINE.GetSystem<Gui>()->Draw();
 

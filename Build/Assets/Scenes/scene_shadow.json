@@ -1,0 +1,136 @@
+{
+	"actors": [
+		{
+			"type": "Actor",
+			"name": "camera1",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 0, 2, 3 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "CameraComponent",
+					"fov": 70,
+					"aspect": 1.78,
+					"near": 0.1,
+					"far": 100.0
+
+				},
+				{
+					"type": "CameraController",
+					"speed": 5,
+					"sensitvity": 0.5,
+					"yaw": 0,
+					"pitch": 0
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "banner",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 11, 1, 11 ],
+				"scale": [ 0.01, 0.01, 0.01 ],
+				"rotation": [ 0, 180, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Banner_01.obj",
+					"materialName": "Fantasy/fantasy.mtrl",
+					"enableDepth": true
+				},
+				{
+					"type": "RotateComponent",
+					"rotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "tower",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 2, 0.5, 0 ],
+				"scale": [ 0.05, 0.05, 0.05 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Undead_Castle_Tower.obj",
+					"materialName": "Fantasy/fantasy.mtrl",
+					"enableDepth": true
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "ground",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 0, 0, 0 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Tile_Grass_01.obj",
+					"materialName": "Fantasy/fantasy.mtrl",
+					"enableDepth": true
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "depth_test",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 0, 0, 0 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "models/quad.obj",
+					"materialName": "materials/sprite.mtrl",
+					"enableDepth": true
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "light",
+			"persistent": true,
+			"active": true,
+			"prototype": false,
+			"transform": {
+				"position": [ 0, 5, 0 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 90, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "LightComponent",
+					"lightType": "directional",
+					"color": [ 1, 1, 1 ],
+					"intensity": 1,
+					"range": 20,
+					"innerAngle": 10.0,
+					"outerAngle": 30.0,
+					"caseShadow": true
+				}
+			]
+		}
+	]
+}

@@ -168,6 +168,7 @@
     <ClInclude Include="World07.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Build\Assets\Fantasy\fantasy.mtrl" />
     <None Include="..\..\Build\Assets\Materials\framebuffer.mtrl" />
     <None Include="..\..\Build\Assets\Materials\grid.mtrl" />
     <None Include="..\..\Build\Assets\Materials\multi.mtrl" />
@@ -183,6 +184,7 @@
     <None Include="..\..\Build\Assets\Materials\tree.mtrl" />
     <None Include="..\..\Build\Assets\Scenes\scene.json" />
     <None Include="..\..\Build\Assets\Scenes\scene_framebuffer.json" />
+    <None Include="..\..\Build\Assets\Scenes\scene_shadow.json" />
     <None Include="..\..\Build\Assets\Shaders\cubemap.frag" />
     <None Include="..\..\Build\Assets\Shaders\lit_phong.frag" />
     <None Include="..\..\Build\Assets\Shaders\lit_phong.prog" />
@@ -205,6 +207,9 @@
     <None Include="..\..\Build\Assets\Shaders\reflection.vert" />
     <None Include="..\..\Build\Assets\Shaders\refraction.prog" />
     <None Include="..\..\Build\Assets\Shaders\refraction.vert" />
+    <None Include="..\..\Build\Assets\Shaders\shadow_depth.frag" />
+    <None Include="..\..\Build\Assets\Shaders\shadow_depth.prog" />
+    <None Include="..\..\Build\Assets\Shaders\shadow_depth.vert" />
     <None Include="..\..\Build\Assets\Shaders\skybox.prog" />
     <None Include="..\..\Build\Assets\Shaders\skybox.vert" />
     <None Include="..\..\Build\Assets\Shaders\unlit_billboard.prog" />
