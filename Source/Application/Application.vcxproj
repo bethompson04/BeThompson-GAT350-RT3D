@@ -182,6 +182,7 @@
     <None Include="..\..\Build\Assets\Materials\sprite.mtrl" />
     <None Include="..\..\Build\Assets\Materials\squirrel.mtrl" />
     <None Include="..\..\Build\Assets\Materials\tree.mtrl" />
+    <None Include="..\..\Build\Assets\Materials\ui_light.mtrl" />
     <None Include="..\..\Build\Assets\Scenes\scene.json" />
     <None Include="..\..\Build\Assets\Scenes\scene_framebuffer.json" />
     <None Include="..\..\Build\Assets\Scenes\scene_shadow.json" />

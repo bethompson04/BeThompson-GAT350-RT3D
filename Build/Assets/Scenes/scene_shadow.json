@@ -44,10 +44,6 @@
 					"modelName": "fantasy/obj/SF_Bld_Castle_Banner_01.obj",
 					"materialName": "Fantasy/fantasy.mtrl",
 					"enableDepth": true
-				},
-				{
-					"type": "RotateComponent",
-					"rotation": [ 0, 0, 0 ]
 				}
 			]
 		},
@@ -57,7 +53,7 @@
 			"persistent": true,
 			"active": true,
 			"transform": {
-				"position": [ 2, 0.5, 0 ],
+				"position": [ 0, 0, 0 ],
 				"scale": [ 0.05, 0.05, 0.05 ],
 				"rotation": [ 0, 0, 0 ]
 			},
@@ -93,7 +89,7 @@
 			"type": "Actor",
 			"name": "depth_test",
 			"persistent": true,
-			"active": true,
+			"active": false,
 			"transform": {
 				"position": [ 0, 0, 0 ],
 				"scale": [ 1, 1, 1 ],
@@ -116,8 +112,8 @@
 			"prototype": false,
 			"transform": {
 				"position": [ 0, 5, 0 ],
-				"scale": [ 1, 1, 1 ],
-				"rotation": [ 90, 0, 0 ]
+				"scale": [ 0.5, 0.5, 0.5 ],
+				"rotation": [ 60, 30, 0 ]
 			},
 			"components": [
 				{
@@ -129,6 +125,12 @@
 					"innerAngle": 10.0,
 					"outerAngle": 30.0,
 					"caseShadow": true
+				},
+				{
+					"type": "ModelComponent",
+					"modelName": "models/quad.obj",
+					"materialName": "materials/ui_light.mtrl",
+					"enableDepth": true
 				}
 			]
 		}
