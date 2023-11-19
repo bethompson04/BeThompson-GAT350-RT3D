@@ -87,11 +87,16 @@ void phong(in Light light, in vec3 position, in vec3 normal, out vec3 diffuse, o
 	specular = vec3(0);
 	if (intensity > 0)
 	{
+		//Phong
 		// calculating reflection 
-		vec3 reflection = reflect(-lightDirection, fnormal);
+		//vec3 reflection = reflect(-lightDirection, normal);
 		// calculating direction
 		vec3 viewDirection = normalize(-fposition);
-		intensity = max(dot(reflection, viewDirection), 0);
+
+		// Blinn-Phong
+		vec3 h = normalize(viewDirection + lightDirection);
+		intensity = max(dot(h, normal), 0);
+
 		intensity = pow(intensity, material.shine);
 		specular = vec3(intensity * spotIntensity);
 	}

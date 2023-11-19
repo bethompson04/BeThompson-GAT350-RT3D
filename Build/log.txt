@@ -5,7 +5,7 @@ INFO: Factory.h(74) Class registered: EnginePhysicsComponent
 INFO: Factory.h(74) Class registered: CameraController
 INFO: Factory.h(74) Class registered: CameraComponent
 INFO: Factory.h(74) Class registered: Actor
-INFO: Main.cpp(33) Initialize Engine...
+INFO: Main.cpp(34) Initialize Engine...
 WARNING: Program.cpp(165) Could not find uniform location: view
 WARNING: Program.cpp(165) Could not find uniform location: projection
 WARNING: Program.cpp(165) Could not find uniform location: lights[0].type
@@ -32,6 +32,3 @@ WARNING: Program.cpp(165) Could not find uniform location: material.params
 WARNING: Program.cpp(165) Could not find uniform location: material.specular
 WARNING: Program.cpp(165) Could not find uniform location: material.emissive
 WARNING: Program.cpp(165) Could not find uniform location: material.shine
-WARNING: Program.cpp(165) Could not find uniform location: shadowBias
-WARNING: Program.cpp(165) Could not find uniform location: shadowVP
-WARNING: Program.cpp(165) Could not find uniform location: shadowBias

@@ -55,7 +55,6 @@ namespace nc
 		if (type != Directional) ImGui::DragFloat("Range", &range, 0.1f, 0.1f, 50);
 
 		ImGui::Checkbox("Cast Shadow", &castShadow);
-
 		if (castShadow)
 		{
 			ImGui::DragFloat("Shadow Size", &shadowSize, 0.1f, 1, 60);
@@ -79,15 +78,14 @@ namespace nc
 		std::string lightTypeName;
 		READ_NAME_DATA(value, "lightType", lightTypeName);
 		if (StringUtils::IsEqualIgnoreCase(lightTypeName, "point")) type = eType::Point;
-		else if (StringUtils::IsEqualIgnoreCase(lightTypeName, "directional")) type = eType::Point;
-		else if (StringUtils::IsEqualIgnoreCase(lightTypeName, "spot")) type = eType::Point;
+		else if (StringUtils::IsEqualIgnoreCase(lightTypeName, "directional")) type = eType::Directional;
+		else if (StringUtils::IsEqualIgnoreCase(lightTypeName, "spot")) type = eType::Spot;
 
 		READ_DATA(value, color);
 		READ_DATA(value, intensity);
 		READ_DATA(value, range);
 		READ_DATA(value, innerAngle);
 		READ_DATA(value, outerAngle);
-
 		READ_DATA(value, castShadow);
 	}
 }

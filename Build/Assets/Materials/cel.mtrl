@@ -1,9 +1,8 @@
 {
-  "program": "shaders/lit_phong_normal.prog",
-  "albedoTexture": "Fantasy/Textures/Medieval_Texture.png",
+  "program": "shaders/lit_cel.prog",
   "albedo": [
-    1,
-    1,
+    0,
+    0,
     1
   ],
   "specular": [

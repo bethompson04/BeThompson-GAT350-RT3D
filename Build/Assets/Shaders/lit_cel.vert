@@ -8,6 +8,7 @@ out layout(location = 0) vec3 oposition;
 out layout(location = 1) vec3 onormal;
 out layout(location = 2) vec2 otexcoord;
 out layout(location = 3) vec4 oshadowcoord;
+out layout(location = 4) vec3 oviewdir;
 
 uniform mat4 model;
 uniform mat4 view;
@@ -36,6 +37,9 @@ void main()
 	oposition = vec3(modelView * vec4(vposition,1));
 	onormal = normalize(mat3(modelView) * vnormal);
 	otexcoord = (vtexcoord * material.tiling) + material.offset;
+
+	//calculate view direction, the oposition has already been moved to world view space
+	oviewdir = normalize(-oposition);
 
 	oshadowcoord = shadowVP * model * vec4(vposition, 1);
 

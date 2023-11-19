@@ -42,14 +42,14 @@
 				{
 					"type": "ModelComponent",
 					"modelName": "fantasy/obj/SF_Bld_Castle_Banner_01.obj",
-					"materialName": "Fantasy/fantasy.mtrl",
+					"materialName": "materials/cel_shader.mtrl",
 					"enableDepth": true
 				}
 			]
 		},
 		{
 			"type": "Actor",
-			"name": "tower",
+			"name": "cel_test",
 			"persistent": true,
 			"active": true,
 			"transform": {
@@ -60,8 +60,8 @@
 			"components": [
 				{
 					"type": "ModelComponent",
-					"modelName": "models/ogre.obj",
-					"materialName": "materials/ogre.mtrl",
+					"modelName": "models/buddha.obj",
+					"materialName": "materials/cel_shader.mtrl",
 					"enableDepth": true
 				}
 			]
@@ -80,7 +80,7 @@
 				{
 					"type": "ModelComponent",
 					"modelName": "fantasy/obj/SF_Env_Tile_Grass_01.obj",
-					"materialName": "Fantasy/fantasy.mtrl",
+					"materialName": "materials/cel_shader.mtrl",
 					"enableDepth": true
 				}
 			]

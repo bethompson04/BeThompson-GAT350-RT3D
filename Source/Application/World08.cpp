@@ -1,4 +1,4 @@
-#include "World07.h"
+#include "World08.h"
 #include "Framework/Framework.h"
 #include "Renderer/Renderer.h"
 #include "Input/InputSystem.h"
@@ -11,10 +11,10 @@
 
 namespace nc
 {
-    bool World07::Initialize()
+    bool World08::Initialize()
     {
         m_scene = std::make_unique<Scene>();
-        m_scene->Load("scenes/scene_shadow.json");
+        m_scene->Load("scenes/scene_cell.json");
         m_scene->Initialize();
 
         // depth texture create
@@ -43,23 +43,39 @@ namespace nc
         return true;
     }
 
-    void World07::Shutdown()
+    void World08::Shutdown()
     {
     }
 
-    void World07::Update(float dt)
+    void World08::Update(float dt)
     {
         m_time += dt;
 
         ENGINE.GetSystem<Gui>()->BeginFrame();
         
         m_scene->Update(dt);
-        m_scene->ProcessGui();
+        ImGui::Begin("Cel Shader");
+        ImGui::DragInt("Levels", &m_celLevels, 1, 0, 20);
+        ImGui::DragFloat("Specular Cutoff", &m_celSpecularCutoff);
+        ImGui::DragFloat("Outline", &m_celOutline);
+        ImGui::ColorEdit3("Outline Color", glm::value_ptr(m_outlineColor));
 
+        ImGui::End();
+        m_scene->ProcessGui();
+        auto program = GET_RESOURCE(Program, "shaders/lit_cel.prog");
+        if (program)
+        {
+            program->Use();
+            program->SetUniform("celLevels", m_celLevels);
+            program->SetUniform("celSpecularCutoff", m_celSpecularCutoff);
+            program->SetUniform("celOutline", m_celOutline);
+            program->SetUniform("outlineColor", m_outlineColor);
+
+        }
         ENGINE.GetSystem<Gui>()->EndFrame();
     }
 
-    void World07::Draw(Renderer& renderer)
+    void World08::Draw(Renderer& renderer)
     {
         // ** PASS ONE **
         auto framebuffer = GET_RESOURCE(Framebuffer, "depth_buffer");

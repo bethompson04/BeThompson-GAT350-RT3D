@@ -49,6 +49,9 @@
     <ClCompile Include="World07.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="World08.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="World01.h">
@@ -70,6 +73,9 @@
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="World07.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="World08.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
@@ -247,6 +253,24 @@
     </None>
     <None Include="..\..\Build\Assets\Materials\ui_light.mtrl">
       <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Scenes\scene_cell.json">
+      <Filter>Scenes</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\lit_cel.prog">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\lit_cel.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Materials\cel_shader.mtrl">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Materials\cel.mtrl">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\lit_cel.vert">
+      <Filter>Shaders</Filter>
     </None>
   </ItemGroup>
 </Project>
