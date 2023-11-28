@@ -272,5 +272,8 @@
     <None Include="..\..\Build\Assets\Shaders\lit_cel.vert">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="..\..\Build\Assets\Scenes\scene_editor.json">
+      <Filter>Scenes</Filter>
+    </None>
   </ItemGroup>
 </Project>

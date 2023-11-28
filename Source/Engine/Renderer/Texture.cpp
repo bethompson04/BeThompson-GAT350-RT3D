@@ -58,8 +58,11 @@ namespace nc
 		// texture parameters set
 		glTexParameteri(m_target, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 		glTexParameteri(m_target, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		glTexParameteri(m_target, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-		glTexParameteri(m_target, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+		glTexParameteri(m_target, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+		glTexParameteri(m_target, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+
+		GLfloat border[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+		glTexParameterfv(m_target, GL_TEXTURE_BORDER_COLOR, border);
 
 		return true;
 	}
@@ -95,6 +98,15 @@ namespace nc
 		stbi_image_free(data);
 
 		return true;
+	}
+
+	void Texture::ProcessGui()
+	{
+		ImGui::TextColored(ImVec4{ 0, 1, 0, 1 }, "Name: %s", name.c_str());
+		ImGui::Text("Size: %d x %d", m_size.x, m_size.y);
+		ImGui::Separator();
+		ImVec2 size = ImVec2(256, 256);
+		ImGui::Image((void*)(intptr_t)m_texture, size);
 	}
 
 }

@@ -35,9 +35,9 @@ namespace nc
 	}
 
 
-	std::string CreateUnique(const std::string& str)
+	std::string StringUtils::CreateUnique(const std::string& str)
 	{
-		static uint32_t unique = 0;
+		static uint32_t unique = 1;
 
 		return str + std::to_string(unique++);
 	}

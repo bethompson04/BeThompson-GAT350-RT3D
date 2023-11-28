@@ -43,6 +43,7 @@ namespace nc
 			return false;
 		}
 
+		resource->name = lName;
 		m_resources[lName] = resource;
 
 		return true;

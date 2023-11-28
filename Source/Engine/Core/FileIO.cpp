@@ -1,7 +1,7 @@
-#include "FileIO.h"
 #include "Logger.h"
 #include <fstream>
 #include <iostream>
+#include <filesystem>
 
 namespace nc
 {
@@ -21,6 +21,11 @@ namespace nc
 	std::string getFileName(const std::filesystem::path& path)
 	{
 		return path.filename().string();
+	}
+
+	std::string getRelativePath(const std::filesystem::path& path)
+	{
+		return std::filesystem::relative(path).string();
 	}
 
 	bool fileExists(const std::filesystem::path& path)

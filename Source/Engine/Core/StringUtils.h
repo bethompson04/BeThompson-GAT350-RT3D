@@ -12,7 +12,7 @@ namespace nc
 
 		static bool IsEqualIgnoreCase(std::string string1, std::string string2);
 
-		static std::string CreateUnique(std::string& string);
+		static std::string CreateUnique(const std::string& string);
 
 	private:
 	};
